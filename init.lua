@@ -1,4 +1,11 @@
 require 'vimopts'
+require 'mappings'
+require 'theme_toggle'
+
+-- local floating_note = require 'floating-note'
+-- floating_note.setup {
+--   target_file = '~/obsidian-vault/quicknote.md',
+-- }
 
 -- vim.o.termguicolors = false
 vim.opt.termguicolors = true
@@ -35,10 +42,14 @@ require('lazy').setup('plugins', {
   },
 })
 
-vim.cmd 'colorscheme base16-black-metal-gorgoroth'
+vim.filetype.add {
+  extension = {
+    templ = 'templ',
+  },
+}
 
 -- indicator at 80 characters
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '81'
 
 -- 80 character line limit, and start new line
 vim.api.nvim_create_autocmd('FileType', {
@@ -49,3 +60,9 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.formatoptions = 't' -- Auto-wrap text when typing
   end,
 })
+
+vim.diagnostic.config {
+  virtual_text = true,
+}
+
+load_theme()

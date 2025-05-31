@@ -1,7 +1,7 @@
 return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
-  lazy = false,
+  event = 'VeryLazy',
   ft = 'markdown',
   -- },
   dependencies = {
@@ -49,19 +49,27 @@ return {
         opts = { noremap = false, expr = true, buffer = true },
       },
       -- Toggle check-boxes.
-      ['<leader>ch'] = {
+      ['<cr>'] = {
         action = function()
           return require('obsidian').util.toggle_checkbox()
         end,
         opts = { buffer = true },
+        -- Action to only follow link
+        ['<leader>ol'] = {
+          action = function()
+            -- Call the function specifically for following links
+            return require('obsidian').util.follow_link()
+          end,
+          opts = { buffer = true, expr = true },
+        },
       },
-      -- Smart action depending on context, either follow link or toggle checkbox.
-      ['<cr>'] = {
-        action = function()
-          return require('obsidian').util.smart_action()
-        end,
-        opts = { buffer = true, expr = true },
-      },
+      -- -- Smart action depending on context, either follow link or toggle checkbox.
+      -- ['<cr>'] = {
+      --   action = function()
+      --     return require('obsidian').util.smart_action()
+      --   end,
+      --   opts = { buffer = true, expr = true },
+      -- },
     },
 
     -- Optional, customize how note IDs are generated given an optional title.

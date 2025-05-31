@@ -1,37 +1,48 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  dependencies = {
+    'vrischmann/tree-sitter-templ',
+  },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-  opts = {
-    ensure_installed = {
-      'bash',
-      'c',
-      'css',
-      'diff',
-      'go',
-      'html',
-      'lua',
-      'luadoc',
-      'markdown',
-      'markdown_inline',
-      'query',
-      'typescript',
-      'swift',
-      'vim',
-      'vimdoc',
-    },
-    -- Autoinstall languages that are not installed
-    auto_install = true,
-    highlight = {
-      enable = true,
-      -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-      --  If you are experiencing weird indenting issues, add the language to
-      --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-      additional_vim_regex_highlighting = { 'ruby' },
-    },
-    indent = { enable = true, disable = { 'ruby' } },
+  ignore_install = {},
+  ensure_installed = {
+    'typst',
+    'purescript',
+    'nix',
+    'nim',
+    'vimdoc',
+    'go',
+    'rust',
+    'c',
+    'lua',
+    'python',
+    'html',
+    'css',
+    'javascript',
+    'typescript',
+    'prisma',
+    'haskell',
+    'zig',
+    'gleam',
+    'wgsl',
+    'php',
+    'nim',
+    'sql',
+    'markdown',
+    'latex',
+    'gdscript',
+    'gdshader',
+    'templ',
   },
+  highlight = {
+    enable = true,
+  },
+  indent = { enable = true },
+  modules = {},
+  sync_install = true,
+  auto_install = true,
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
   --

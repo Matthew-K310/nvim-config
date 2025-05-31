@@ -20,11 +20,10 @@ return {
         html = { 'prettier' },
         json = { 'prettier' },
         markdown = { 'prettier' },
-        -- gleam = { 'gleam' },
-        -- sql = { "sqlfmt" },
         asm = { 'asmfmt' },
         css = { 'prettier', stop_after_first = true },
-        sql = { 'sql-formatter', 'sqruff' },
+        sql = { 'sqruff', 'sql-formatter' },
+        swift = { 'swiftlint' },
       },
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat then

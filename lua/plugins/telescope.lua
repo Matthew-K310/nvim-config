@@ -71,11 +71,7 @@ return {
       -- vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'NONE' })
       -- vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = 'NONE' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', function()
-        builtin.find_files {
-          search_dirs = { '.config', 'Developer', 'Documents', 'obsidian-vault', 'Desktop' },
-        }
-      end, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Telescope buffers' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [B]uiltin' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Grep String' })

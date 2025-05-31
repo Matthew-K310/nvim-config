@@ -6,7 +6,7 @@ return {
       window = {
         -- width = 85,
         width = 100,
-        -- transparent = true,
+        transparent = true,
       },
     }
     vim.keymap.set('n', '<leader>zz', ':ZenMode<CR>')

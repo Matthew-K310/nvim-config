@@ -30,14 +30,7 @@ return {
     keys = {
       -- Top Pickers & Explorer
       {
-        '<leader>:',
-        function()
-          Snacks.picker.command_history()
-        end,
-        desc = 'Command History',
-      },
-      {
-        '<leader>N',
+        '<leader>n',
         function()
           Snacks.picker.notifications()
         end,
@@ -57,13 +50,6 @@ return {
           Snacks.picker.git_log()
         end,
         desc = 'Git Log',
-      },
-      {
-        '<leader>gL',
-        function()
-          Snacks.picker.git_log_line()
-        end,
-        desc = 'Git Log Line',
       },
       {
         '<leader>gs',
@@ -102,28 +88,7 @@ return {
         nowait = true,
         desc = 'References',
       },
-      {
-        'gI',
-        function()
-          Snacks.picker.lsp_implementations()
-        end,
-        desc = 'Goto Implementation',
-      },
-      {
-        'gy',
-        function()
-          Snacks.picker.lsp_type_definitions()
-        end,
-        desc = 'Goto T[y]pe Definition',
-      },
       -- Other
-      {
-        '<leader>n',
-        function()
-          Snacks.notifier.show_history()
-        end,
-        desc = 'Notification History',
-      },
       {
         '<leader>gB',
         function()
@@ -133,7 +98,7 @@ return {
         mode = { 'n', 'v' },
       },
       {
-        '<leader>gg',
+        '<leader>lg',
         function()
           Snacks.lazygit()
         end,
@@ -145,22 +110,6 @@ return {
           Snacks.notifier.hide()
         end,
         desc = 'Dismiss All Notifications',
-      },
-      {
-        ']]',
-        function()
-          Snacks.words.jump(vim.v.count1)
-        end,
-        desc = 'Next Reference',
-        mode = { 'n', 't' },
-      },
-      {
-        '[[',
-        function()
-          Snacks.words.jump(-vim.v.count1)
-        end,
-        desc = 'Prev Reference',
-        mode = { 'n', 't' },
       },
     },
     init = function()

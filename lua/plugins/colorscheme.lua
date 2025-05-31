@@ -1,28 +1,55 @@
--- return { -- 'folke/tokyonight.nvim',
---   'rose-pine/neovim',
---   priority = 1000, -- Make sure to load this before all the other start plugins.
---   init = function()
---     vim.cmd.colorscheme 'rose-pine'
---
---     vim.cmd.hi 'Comment gui=none'
---   end,
--- }
+-- In your LazyVim plugin specification file (e.g., lua/plugins/colorscheme.lua)
 
 return {
   {
-    'vague2k/vague.nvim',
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'vague'
-    end,
+    'RRethy/base16-nvim',
+    -- Load this plugin on startup so the colorscheme is available immediately
+    lazy = false,
+    -- Alternatively, use an event like "VeryLazy"
+    -- event = "VeryLazy",
+
+    -- The config function runs AFTER the plugin is loaded
     config = function()
-      -- NOTE: you do not need to call setup if you don't want to.
-      require('vague').setup {
-        -- optional configuration here
+      -- Set the colorscheme here, now that the plugin is loaded
+      vim.cmd 'silent! colorscheme base16-black-metal-gorgoroth'
+
+      -- You can also add any other base16-nvim specific configuration here
+      -- require('base16-colorscheme').setup({ ... })
+    end,
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine', -- Set a name
+    lazy = true,
+    config = function()
+      require('rose-pine').setup {
+        variant = 'moon', -- "main", "moon" or "dawn"
+        transparent_background = true,
       }
     end,
   },
   {
-    'RRethy/base16-nvim',
+    'https://github.com/vague2k/vague.nvim', -- Assuming this is the correct repo
+    name = 'vague', -- Set a name
+    lazy = true,
+    transparent_background = true,
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin', -- Set a name for the plugin
+    lazy = true,
+    config = function()
+      require('catppuccin').setup {
+        -- your configuration, for example...
+        flavour = 'frappe', -- latte, frappe, macchiato, mocha
+        transparent_background = true,
+        default_integrations = true,
+        integrations = {
+          harpoon = true,
+        },
+      }
+      -- If Catppuccin requires an explicit load call after setup, uncomment the next line
+      -- vim.cmd.colorscheme "catppuccin" -- Use this if setup() doesn't automatically load
+    end,
   },
 }

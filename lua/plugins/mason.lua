@@ -21,13 +21,16 @@ return {
         'jsonls',
         'eslint',
         'marksman',
-        -- 'markdownlint',
         'sqlls',
-        -- 'swiftlint',
+        -- 'sqls',
         'wgsl_analyzer',
         'texlab',
         'templ',
         'intelephense',
+        'cmake',
+        'rust_analyzer',
+        'astro',
+        'texlab',
         'nim_langserver',
         'zls',
       },
@@ -45,6 +48,7 @@ return {
       'goimports-reviser',
       'black',
       'shfmt',
+      'sleek',
     }
 
     -- Ensure formatters are installed
