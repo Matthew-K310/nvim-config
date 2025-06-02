@@ -46,3 +46,9 @@ vim.keymap.set('n', '<leader>ff', ":lua require('fzf-lua').files({ cwd = '..' })
 vim.keymap.set('n', '<leader>fr', ":lua require('fzf-lua').oldfiles()<CR>") --last search
 vim.keymap.set('n', '<leader>fg', ":lua require('fzf-lua').grep()<CR>") --grep
 vim.keymap.set('n', '<leader>fG', ":lua require('fzf-lua').grep_cword()<CR>") --grep word under cursor
+
+-- Undotree
+vim.keymap.set('n', '<leader>U', vim.cmd.UndotreeToggle)
+
+-- Fugitive (git)
+vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
