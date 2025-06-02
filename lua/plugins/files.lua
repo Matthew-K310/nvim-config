@@ -30,7 +30,7 @@ return {
     'stevearc/oil.nvim',
     opts = {},
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-    vim.keymap.set('n', '<leader>n', ':Oil<CR>'),
+    vim.keymap.set('n', '<leader>N', ':Oil<CR>'),
     -- vim.keymap.set('n', '<leader>n', ':lua require("oil").toggle_float()<CR>'),
     -- vim.keymap.set('n', '<C-n>', ':lua require("oil").toggle_float()<CR>'),
     config = function()

@@ -6,6 +6,9 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
+      bigfile = { enabled = false },
+      dashboard = { enabled = false },
+      explorer = { enabled = false },
       indent = { enabled = true },
       input = { enabled = true },
       notifier = {
@@ -15,7 +18,9 @@ return {
       picker = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
+      scroll = { enabled = false },
       statuscolumn = { enabled = true },
+      words = { enabled = false },
       styles = {
         notification = {
           -- wo = { wrap = true } -- Wrap notifications
@@ -23,16 +28,15 @@ return {
       },
     },
     keys = {
-      -- LSP
+      -- Top Pickers & Explorer
       {
-        'gr',
+        '<leader>n',
         function()
-          Snacks.picker.lsp_references()
+          Snacks.picker.notifications()
         end,
-        nowait = true,
-        desc = 'References',
+        desc = 'Notification History',
       },
-      -- Other
+      -- git
       {
         '<leader>gB',
         function()
@@ -47,6 +51,14 @@ return {
           Snacks.lazygit()
         end,
         desc = 'Lazygit',
+      },
+      -- Other
+      {
+        '<leader>un',
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = 'Dismiss All Notifications',
       },
     },
     init = function()

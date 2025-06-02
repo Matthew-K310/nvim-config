@@ -1,3 +1,5 @@
+local autocmd = vim.api.nvim_create_autocmd
+
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
 vim.keymap.set('n', ',html', ':-1read $HOME/.config/nvim/lua/snippets/skeleton.html<CR>5jwf>a')
