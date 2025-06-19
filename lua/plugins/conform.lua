@@ -16,7 +16,6 @@ return {
         cpp = { 'clang_format' },
         haskell = { 'ormolu' },
         yaml = { 'yamlfmt' },
-        templ = { 'prettier' },
         html = { 'prettier' },
         json = { 'prettier' },
         markdown = { 'prettier' },

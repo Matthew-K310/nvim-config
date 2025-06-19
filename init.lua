@@ -42,23 +42,53 @@ require('lazy').setup('plugins', {
   },
 })
 
+-- Ensure you have your filetype detection setup:
 vim.filetype.add {
   extension = {
-    templ = 'templ',
+    templ = 'templ', -- Pattern should be the filetype name
   },
 }
 
 -- indicator at 80 characters
-vim.opt.colorcolumn = '81'
+vim.opt.colorcolumn = '80'
 
--- 80 character line limit, and start new line
+-- Markdown line limit
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
   callback = function()
-    vim.bo.textwidth = 80 -- Set max line width to 100 characters
-    -- vim.bo.wrap = true -- Enable line wrapping
-    vim.bo.formatoptions = 't' -- Auto-wrap text when typing
+    vim.bo.textwidth = 80
+    -- vim.bo.wrap = true
+    vim.bo.formatoptions = 't'
   end,
+})
+
+-- LaTeX line limit
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'latex',
+  callback = function()
+    vim.bo.textwidth = 80
+    -- vim.bo.wrap = true
+    vim.bo.formatoptions = 't'
+  end,
+})
+
+-- LaTeX compile on write
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = '*.tex', -- Apply this autocommand only to files ending in .tex
+  callback = function()
+    local current_file = vim.api.nvim_buf_get_name(0)
+
+    if current_file ~= '' then
+      -- Run pdflatex on the current file silently using vim.fn.system()
+      -- Note: For complex LaTeX projects, you might need to 'cd' to the
+      -- directory first or adjust compiler options.
+      vim.fn.system('pdflatex ' .. vim.fn.shellescape(current_file))
+
+      -- Optional: Add a silent notification that compilation finished
+      -- vim.notify("pdflatex compilation finished for " .. current_file, vim.log.levels.INFO, { transient = true, timeout = 1000 })
+    end
+  end,
+  desc = 'Run pdflatex on .tex file save', -- Optional description
 })
 
 vim.diagnostic.config {

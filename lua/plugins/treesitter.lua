@@ -1,5 +1,6 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
   dependencies = {
     'vrischmann/tree-sitter-templ',
   },
@@ -36,9 +37,7 @@ return { -- Highlight, edit, and navigate code
     'gdshader',
     'templ',
   },
-  highlight = {
-    enable = true,
-  },
+  highlight = { enable = true },
   indent = { enable = true },
   modules = {},
   sync_install = true,

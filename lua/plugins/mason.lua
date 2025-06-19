@@ -12,7 +12,7 @@ return {
         'cssls',
         'emmet_language_server',
         'htmx',
-        'tailwindcss',
+        -- 'tailwindcss',
         'ts_ls',
         'pylsp',
         'clangd',

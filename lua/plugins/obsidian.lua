@@ -7,39 +7,22 @@ return {
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
-
-    -- see below for full list of optional dependencies 👇
   },
   opts = {
-    dir = '~/obsidian-vault',
+    dir = '~/Notes/obsidian-vault',
 
     vim.keymap.set('n', '<leader>on', ':ObsidianNew<CR>', { desc = '[O]pen [N]ew Note' }),
     vim.keymap.set('n', '<leader>ot', ':ObsidianNewFromTemplate<CR>', { desc = '[O]pen from [T]emplate' }),
     vim.keymap.set('n', '<leader>fl', ':ObsidianFollowLink<CR>', { desc = '[F]ollow [L]ink to File' }),
 
     daily_notes = {
-      -- Optional, if you keep daily notes in a separate directory.
       folder = 'dailies',
-      -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = '%d%m%Y',
-      -- Optional, default tags to add to each new daily note created.
+      date_format = '%Y%m%d',
       default_tags = { 'daily' },
-      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
       template = 'daily',
 
       vim.keymap.set('n', '<leader>mD', ':ObsidianDailies<CR>', { desc = 'Open [D]aily note' }),
     },
-    --
-    -- -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-    -- completion = {
-    --   -- Set to false to disable completion.
-    --   nvim_cmp = true,
-    --   -- Trigger completion at 2 chars.
-    --   min_chars = 2,
-    -- },
-
-    -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
-    -- way then set 'mappings = {}'.
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ['gf'] = {
@@ -63,21 +46,14 @@ return {
           opts = { buffer = true, expr = true },
         },
       },
-      -- -- Smart action depending on context, either follow link or toggle checkbox.
-      -- ['<cr>'] = {
-      --   action = function()
-      --     return require('obsidian').util.smart_action()
-      --   end,
-      --   opts = { buffer = true, expr = true },
-      -- },
     },
 
     -- Optional, customize how note IDs are generated given an optional title.
     ---@param title string|?
     ---@return string
     note_id_func = function(title)
-      -- Get the current date and time formatted as DDMMYYYYHHmm
-      local timestamp = os.date '%d%m%Y%H%M'
+      -- Get the current date and time formatted as YYYYmmDDHHMM
+      local timestamp = os.date '%Y%m%d%H%M'
 
       local suffix = ''
       if title ~= nil then
@@ -107,14 +83,14 @@ return {
     -- Optional, for templates (see below).
     templates = {
       folder = 'templates',
-      date_format = '%d%m%Y',
+      date_format = '%Y%m%d',
       time_format = '%H:%M',
       vim.keymap.set('n', '<leader>mt', ':ObsidianTemplate<CR>', { desc = 'Open [T]emplates' }),
     },
 
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-      name = 'telescope.nvim',
+      name = 'fzf-lua',
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       note_mappings = {
@@ -137,13 +113,8 @@ return {
     sort_by = 'modified',
     sort_reversed = true,
 
-    -- Set the maximum number of lines to read from notes on disk when performing certain searches.
     search_max_lines = 1000,
 
-    -- Optional, determines how certain commands open notes. The valid options are:
-    -- 1. "current" (the default) - to always open in the current window
-    -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
-    -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
     open_notes_in = 'current',
   },
 }

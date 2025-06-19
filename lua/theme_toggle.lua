@@ -11,7 +11,7 @@ local themes = {
   'base16-black-metal-gorgoroth', -- Name used by base16-nvim
   'rose-pine', -- Check your rose-pine setup for the exact name (e.g., 'rose-pine', 'rose-pine-moon')
   'vague', -- Check vague.nvim for the exact name, often 'vague'
-  'catppuccin-frappe', -- Check your catppuccin setup for the exact name (e.g., 'catppuccin-mocha')
+  'catppuccin-mocha', -- Check your catppuccin setup for the exact name (e.g., 'catppuccin-mocha')
   -- Add any other colorscheme names you have installed and want to cycle
 }
 
